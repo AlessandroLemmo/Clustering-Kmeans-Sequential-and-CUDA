@@ -24,7 +24,7 @@ int main(int argc, char** argv)
 
 	srand(time(NULL));
 
-	size = 500000;		//numero punti
+	size = 500000;			//numero punti
 	k = 10;				//numero clusters
 
 
