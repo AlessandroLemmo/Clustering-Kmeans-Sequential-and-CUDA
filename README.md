@@ -8,13 +8,13 @@ The times of exexution of the two modalities have been compared considering the 
 - variation of number of clusters
 
 The project was developed with Visual Studio. For replicate the result download the project, open Visual Studio and compute the following steps:
-- []Click on File -> Open -> Project/Solution
-- Select the .sln project file and click to Open
-- Configuration Manager -> Active solution configuration -> Release
-- Configuration Manager -> Active solution platform -> x64
-- Build Dependencies -> Build Customizations -> Tick on CUDA
-- Properties -> Tab CUDA C/C++ -> Target Machine Platform -> 64-bit
-- Properties -> Tab Linker -> Sub-Tab Input -> Additional Dependencies -> cudart.lib 
+1. Click on File -> Open -> Project/Solution
+2. Select the .sln project file and click to Open
+3. Configuration Manager -> Active solution configuration -> Release
+4. Configuration Manager -> Active solution platform -> x64
+5. Build Dependencies -> Build Customizations -> Tick on CUDA
+6. Properties -> Tab CUDA C/C++ -> Target Machine Platform -> 64-bit
+7. Properties -> Tab Linker -> Sub-Tab Input -> Additional Dependencies -> cudart.lib 
 
 In the folder _report_ there are:
 - Relation of the project
