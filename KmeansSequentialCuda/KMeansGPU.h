@@ -46,11 +46,11 @@ inline __global__ void FindCluster(Point* d_points, int* d_clusters, Point* d_re
 	for (int cluster = 0; cluster < k; cluster++)
 	{
 		d_new_result[cluster * threads + i] = Point();
-		d_clusterCounts[cluster * threads + i] = 0;						//numero di punti appartenenti ad ogni cluster inizializzati a 0
+		d_clusterCounts[cluster * threads + i] = 0;					//numero di punti appartenenti ad ogni cluster inizializzati a 0
 	}
 
 	//assegnazione del punto i al cluster j
-	for (int pointNr = 0; pointNr < POINTS_FOR_THREAD; pointNr++)		//ciclo sul numero di punti di un thread
+	for (int pointNr = 0; pointNr < POINTS_FOR_THREAD; pointNr++)				//ciclo sul numero di punti di un thread
 	{
 		int index = i * POINTS_FOR_THREAD + pointNr;
 
@@ -63,28 +63,29 @@ inline __global__ void FindCluster(Point* d_points, int* d_clusters, Point* d_re
 
 		Point p = d_points[index];
 
-		for (int j = 0; j < k; j++)										//scorro tutti i clusters
+		for (int j = 0; j < k; j++)							//scorro tutti i clusters
 		{
 			int dist = PointDistance(p, d_result[j]);
 			if (dist < minDist)
 			{
 				minDist = dist;
-				bestCluster = j;										//trovo per il punto index-esimo il miglior cluster
+				bestCluster = j;						//trovo per il punto index-esimo il miglior cluster
 			}
 		}
 
 		if (bestCluster != d_clusters[index])
 		{
 			d_clusters[index] = bestCluster;
-			d_delta[index] = 1;											//d_delta indica il numero di punti cambiati di cluster ad ogni iterazione
+			d_delta[index] = 1;							//d_delta indica il numero di punti cambiati di cluster ad ogni iterazione
 		}
 		d_clusterCounts[bestCluster * threads + i]++;					//numero di punti per cluster
 
 
-		//se due o più punti dello stesso thread dello stesso blocco appartengono allo stesso centroide
+		//se due o piÃ¹ punti dello stesso thread dello stesso blocco appartengono allo stesso centroide
 		//allora si ha una somma altrimenti si somma le coordinate del punto con 0
 		Point point = d_new_result[bestCluster * threads + i];
-		d_new_result[bestCluster * threads + i] = Point(point.X + p.X, point.Y + p.Y, point.Z + p.Z);  //i valori che ci sono più il nuovo punto
+		//i valori che ci sono piÃ¹ il nuovo punto
+		d_new_result[bestCluster * threads + i] = Point(point.X + p.X, point.Y + p.Y, point.Z + p.Z);  
 	}
 }
 
@@ -106,8 +107,8 @@ inline __global__ void CalculateResult(Point* d_new_result_final, int* d_counts_
 
 inline void SolveGPU(Point* h_points, int size, int k)
 {
-	int* h_clusters;										//indice del cluster di appartenenza di ogni punto
-	Point* h_result;										//centroidi risultati
+	int* h_clusters;									//indice del cluster di appartenenza di ogni punto
+	Point* h_result;									//centroidi risultati
 
 	//variabili GPU
 	Point* d_points;
@@ -123,8 +124,8 @@ inline void SolveGPU(Point* h_points, int size, int k)
 	int nThreads = 128;
 
 	//blocchi per punti da clusterizzare
-	int nBlocks = size / POINTS_FOR_THREAD / nThreads;		//   size/POINTS_PER_THREAD =  numero di threads da usare
-															//   /nThreads = numero di threads per blocco
+	int nBlocks = size / POINTS_FOR_THREAD / nThreads;					//   size/POINTS_PER_THREAD =  numero di threads da usare
+												//   /nThreads = numero di threads per blocco
 	nBlocks += (size % nThreads == 0) ? 0 : 1;
 
 	//blocchi per clusters
