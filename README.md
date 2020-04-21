@@ -7,9 +7,14 @@ The times of exexution of the two modalities have been compared considering the 
 - variation of number of point to clustering
 - variation of number of clusters
 
-The project was developed with Visual Studio. For replicate the result download the project and load this from Visual Studio in the follow way:
+The project was developed with Visual Studio. For replicate the result download the project, open Visual Studio and compute the following steps:
 - Click on File -> Open -> Project/Solution
 - Select the .sln project file and click to Open
+- Configuration Manager -> Active solution configuration -> Release
+                        -> Active solution platform -> x64
+- Build Dependencies -> Build Customizations -> Tick on CUDA
+- Properties -> Tab CUDA C/C++ -> Target Machine Platform -> 64-bit
+-               Tab Linker -> Sub-Tab Input -> Additional Dependencies -> cudart.lib 
 
 In the folder _report_ there are:
 - Relation of the project
