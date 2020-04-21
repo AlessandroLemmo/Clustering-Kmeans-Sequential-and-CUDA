@@ -8,7 +8,7 @@ The times of exexution of the two modalities have been compared considering the 
 - variation of number of clusters
 
 The project was developed with Visual Studio. For replicate the result download the project, open Visual Studio and compute the following steps:
-- [Click on File -> Open -> Project/Solution]
+- []Click on File -> Open -> Project/Solution
 - Select the .sln project file and click to Open
 - Configuration Manager -> Active solution configuration -> Release
 - Configuration Manager -> Active solution platform -> x64
