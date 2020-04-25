@@ -7,7 +7,7 @@ The times of exexution of the two modalities have been compared considering the 
 - variation of number of point to clustering
 - variation of number of clusters
 
-The project was developed with Visual Studio. For replicate the result download the project, open Visual Studio and compute the following steps:
+The project was developed with the operating system Windows an the IDE Visual Studio. For replicate the result download the project, open Visual Studio and compute the following steps:
 1. Click on File -> Open -> Project/Solution
 2. Select the .sln project file and click to Open
 3. Configuration Manager -> Active solution configuration -> Release
