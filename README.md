@@ -19,4 +19,4 @@ The project was developed with the operating system Windows an the IDE Visual St
 In the folder _report_ there are:
 - Relation of the project
 - File excel that reports all time results
-- Powerpoint presentation of the project
+- Slides of presentation
